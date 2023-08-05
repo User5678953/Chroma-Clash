@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     height: 80vh;
     transition: background-color 2s ease;
 }
@@ -39,7 +39,7 @@
 .game-title {
     color: #fff;
     font-size:64px;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Anton', sans-serif;
     text-shadow: 2px 2px 4px rgba(o, o, o, o.8); 
     text-align: center;
 }
