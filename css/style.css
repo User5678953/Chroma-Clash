@@ -7,7 +7,42 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9
-    transition; background-color 2s ease;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    height: 80vh;
+    transition: background-color 2s ease;
+}
+.landing-section {
+    margin-top: 5px;
+}
+.logo-banner {
+    width: 175px;
+    height: 175px;
+    margin-bottom: 10px;
+}
+.game-title {
+    color: #fff;
+    font-size:64px;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 2px 2px 4px rgba(o, o, o, o.8); 
+    text-align: center;
+}
+h6 {
+    color: white;
+
+}
+.start-button {
+    color:#fff;
+    background-color: #008080;
+    padding:20px 80px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+}
+#startButton:hover {
+    background-color: #00b2b2;
+}
+#startButton:active {
+    background-color: #006767;
 }

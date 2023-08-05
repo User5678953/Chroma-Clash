@@ -4,24 +4,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chromat-a-Clash</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
     <!--landing screen-->
     <section  class='landing-screen'>
-        <div class="logo-banner">
-            <!--IMAGE FILE FOR LOGO LATER-->
-            <h1>Chromat-a-Clash</h1>
+        <div class="logo-banner">  
+            <img src="images/icon-512.png" alt="Game Icon" id="gameIcon" width="200" height="200">         
         </div>
+        <h1 class="game-title">Chromat-a-Clash</h1>
 <button class="start-button" onclick="startGame()">Start</button>
-    </section>
     
+</section>
+    
+
+    <footer>
+        <h6>Icon created using IconKitchen</h6>
+
+    </footer>
 <script>
     function startGame(){
         window.location.href="game.html"
     }
 
     //Background color change
-    const colors = ['#FFE5733', '#FFC300', "#FF37A6", "#FFA663", "#ACFF33", "#33C7FF"]
+    const colors = ['#7fbc5f', "#9f516f", "#e71c61", "#7c8a80", "#61848a", "#c494b4"]
     function changeBackgroundcolor () {
         //DOM reference to divs
         const body = document.querySelector('body')
