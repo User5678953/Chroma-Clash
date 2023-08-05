@@ -19,6 +19,17 @@
     function startGame(){
         window.location.href="game.html"
     }
+
+    //Background color change
+    const colors = ['#FFE5733', '#FFC300', "#FF37A6", "#FFA663", "#ACFF33", "#33C7FF"]
+    function changeBackgroundcolor () {
+        //DOM reference to divs
+        const landingScreen = document.queryselector('landing-screen')
+        const randomColor = colors[Math.floor(Math.random()* colors.length)]
+        landingScreen.style.backgroundColor = randomColor
+    }
+
+    changeBackgroundcolor(); 
 </script>
 
 <script src="js/landing.js"></script>
