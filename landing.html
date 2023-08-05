@@ -10,7 +10,7 @@
     <!--landing screen-->
     <section  class='landing-screen'>
         <div class="logo-banner">  
-            <img src="images/icon-512.png" alt="Game Icon" id="gameIcon" width="200" height="200">         
+            <img src="images/icon-512.png" alt="Game Icon" id="gameIcon" class="flip-animation" width="200" height="200">         
         </div>
         <h1 class="game-title">Chromat-a-Clash</h1>
 <button class="start-button" onclick="startGame()">Start</button>
@@ -37,11 +37,27 @@
     }
 
     changeBackgroundcolor();
-    //Interval to rotate through the colors
-    setInterval(changeBackgroundcolor, 5000) 
+
+    // Function to set a random delay for each flip
+    function setRandomDelay() {
+            const icon = document.getElementById("gameIcon")
+            const randomDelay = Math.floor(Math.random() * 5000) + 2000; // Random delay 
+            icon.style.animationDuration = `${randomDelay}ms`;
+            icon.classList.add('flip-animation')
+            setTimeout(() => {
+                icon.classList.remove('flip-animation')
+            }, randomDelay)
+        }
+
+        //Interval to rotate through the colors and random delay
+    setInterval(() => {
+        changeBackgroundcolor()
+        setRandomDelay()
+    }, 6000)
+      
 </script>
 
-<script src="js/landing.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
