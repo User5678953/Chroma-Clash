@@ -26,7 +26,17 @@
      <div class="player-prompt" id="player-prompt">PLAYER PROMPT PLACEHOLDER</div>
     
     <button class="reset-button">Reset Game</button>
+<script>
+// event listener to the reset button
+const resetButton = document.querySelector('.reset-button');
+resetButton.addEventListener('click', resetGame);
 
+// Reset game 
+function resetGame() {
+    // Refresh the page
+    window.location.reload();
+}
+</script>
 
     <script src="js/main.js"></script>
 </body>
