@@ -83,3 +83,14 @@ h6 {
     font-size: 24px;
     color: #333;
 }
+.score {
+    font-weight: bold;
+    font-family: 'Anton', sans-serif;
+}   
+.timer {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+}
