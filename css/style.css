@@ -69,7 +69,7 @@ h6 {
     align-items: center;
     justify-content: center;
     height: 80vh;
-    background-color: #006767;
+    background-color: #f9f9f9;
 
 }
 .banner {
@@ -89,8 +89,39 @@ h6 {
 }   
 .timer {
     font-size: 24px;
-    color: #333;
+    color: #666;
     text-align: center;
     margin: 10px;
     font-weight: bold;
+}
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    background-color: #f9f9f9;
+}
+.tiles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 10px;
+    margin: 20px;
+}
+.tile {
+ width: 100px;
+ height: 100px;
+ border-radius: 10px;
+ cursor: pointer;
+}
+.reset-button {
+    color: #fff;
+    background-color: #008080;
+    padding: 10px 20px 0px 0px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
