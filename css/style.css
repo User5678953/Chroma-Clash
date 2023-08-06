@@ -63,25 +63,34 @@ h6 {
 
 /*Game_HTML styles*/
 
+:root {
+    --color-lightest: #f9f9f9;
+    --color-light: #e6e6e6;
+    --color-mid-light: #cccccc;
+    --color-mid: #b3b3b3;
+    --color-mid-dark: #999999;
+    --color-dark: #808080;
+  }
+
 .game-board {
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 80vh;
-    background-color: #f9f9f9;
+    background-color: var(--color-lightest);
 
 }
 .banner {
     height: 5vh;
-    background-color: blue;
+    background-color: var(--color-mid-dark);
 }
 .game-updates {
     display: flex;
     justify-content: space-between;
     padding:10px;
     font-size: 24px;
-    color: #333;
+    color: var(--color-mid);
 }
 .score {
     font-weight: bold;
@@ -89,7 +98,7 @@ h6 {
 }   
 .timer {
     font-size: 24px;
-    color: #666;
+    color: var(--color-mid);
     text-align: center;
     margin: 10px;
     font-weight: bold;
@@ -100,7 +109,7 @@ h6 {
     align-items: center;
     justify-content: center;
     min-height: 60vh;
-    background-color: #f9f9f9;
+    background-color: var(--color-lightest);
 }
 .tiles-container {
     display: grid;
@@ -117,12 +126,12 @@ h6 {
 .player-prompt {
     font-size: 24px;
     margin-bottom: 20px;
-    color:#333;
+    color: var(--color-lightest);
     display: flex;
     align-items: center;
     justify-content: center;
     height: 10vh;
-    background-color: #00b2b2;
+    background-color: var(--color-dark);
     font-size: 24px;
     font-weight: bold;
 }
