@@ -72,3 +72,14 @@ h6 {
     background-color: #006767;
 
 }
+.banner {
+    height: 5vh;
+    background-color: blue;
+}
+.game-updates {
+    display: flex;
+    justify-content: space-between;
+    padding:10px;
+    font-size: 24px;
+    color: #333;
+}
