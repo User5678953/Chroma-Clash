@@ -9,5 +9,11 @@
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
 //generate 1 tile test!
-const testColor = blue
-function generateTile()
+const testColor = 'blue'
+function generateTile(testColor) {
+const tile = document.createElement('div')
+tile.classList.add('tile')
+tile.style.testColor = testColor
+return tile
+}
+generateTile()
