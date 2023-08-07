@@ -55,14 +55,17 @@ function resetGame() {
     // Refresh the page
     window.location.reload();
 }
+
+//Display countdown for timer update
+function updateTimer(seconds)
+    const timerElement = document.getElementById('timer')
+    timerElement.textContent = seconds
 //Timer Change logic
 function countDown() {
     let seconds = 60
     const countDownInterval = setInterval (() => {
         seconds -- 
-    }
-
-
+    })
 }
 </script>
 
