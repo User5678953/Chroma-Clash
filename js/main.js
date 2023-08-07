@@ -8,3 +8,6 @@
     //Timer Countdown: Create a timer that counts down from a set time and ends the game when it reaches zero.
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
+//generate 1 tile test!
+const testColor = blue
+function generateTile()
