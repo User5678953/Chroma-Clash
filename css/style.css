@@ -41,6 +41,13 @@
     text-shadow: 2px 2px 4px rgba(o, o, o, o.8); 
     text-align: center;
 }
+.top-banner {
+    color: #fff;
+    font: size 30px;
+    font-family: 'Anton', sans-serif;
+    text-shadow: 2px 2px 4px rgba(o, o, o, o.8); 
+    text-align: center;
+}
 h6 {
     color: white;
 
@@ -64,13 +71,13 @@ h6 {
 /*Game_HTML styles*/
 
 :root {
-    --color-lightest: #f9f9f9;
-    --color-light: #e6e6e6;
-    --color-mid-light: #cccccc;
-    --color-mid: #b3b3b3;
-    --color-mid-dark: #999999;
-    --color-dark: #808080;
-  }
+    --color-lightest: #A9A9A9; /* darkgray */
+    --color-light: #808080; /* gray */
+    --color-mid-light: #696969; /* dimgray */
+    --color-mid: #778899; /* lightslategray */
+    --color-mid-dark: #708090; /* slategray */
+    --color-dark: #2F4F4F; /* darkslategray */
+}
 
 .game-board {
     display:flex;
@@ -135,6 +142,7 @@ h6 {
     font-size: 24px;
     font-weight: bold;
 }
+
 .reset-button {
     color: #fff;
     background-color: #008080;

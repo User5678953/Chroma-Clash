@@ -5,9 +5,16 @@
     <title>Chromat-a-Match</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+body {
+    background-color: var(--color-dark)
+}
+    </style>
 </head>
 <body>
-    <div class="banner" id="top-banner"></div>
+    <div class="top-banner" id="top-banner">
+        <h1>Chromat-a-Clash</h1>
+    </div>
      <!--Timer and Score Updates -->
      <div class="game-updates">
         <div class="score" id="player1-score">Player 1: 0</div>
@@ -27,6 +34,9 @@
     
     <button class="reset-button">Reset Game</button>
 <script>
+
+
+
 // event listener to the reset button
 const resetButton = document.querySelector('.reset-button');
 resetButton.addEventListener('click', resetGame);
