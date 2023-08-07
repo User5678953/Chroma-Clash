@@ -79,15 +79,6 @@ h6 {
     --color-dark: #2F4F4F; /* darkslategray */
 }
 
-.game-board {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-    background-color: var(--color-lightest);
-
-}
 .banner {
     height: 5vh;
     background-color: var(--color-mid-dark);
@@ -112,7 +103,6 @@ h6 {
     font-family: 'Anton', sans-serif;
 }
 .game-board {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -155,19 +145,6 @@ h6 {
     border-radius: 5px;
     margin-bottom: 20px;
     margin-top: 20px;
-    margin-right: auto;
-}
-.reset-button {
-    color: #fff;
-    background-color: #008080;
-    padding: 10px 20px;
-    font-size: 20px;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-top: 20px;
     margin-left: auto;
 }
 .start-game-button:hover {
@@ -177,6 +154,8 @@ h6 {
 .start-game-button:active {
     background-color: #006767;
 }
+
+
 .reset-button {
     color: #fff;
     background-color: #008080;

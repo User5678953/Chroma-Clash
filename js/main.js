@@ -19,9 +19,11 @@ return tile
 }
 
 //for loop to iterate totalTiles and genrate multiple  
-
-const tilesContainer = document.querySelector('.tiles-container')
-for (let i=0; i < totalTiles; i++){
+function generateAllTiles(){
+    const tilesContainer = document.querySelector('.tiles-container')
+    for (let i=0; i < totalTiles; i++){
    const tile =generateTile() 
-tilesContainer.appendChild(tile)
+    tilesContainer.appendChild(tile)
+    }
 }
+generateAllTiles()

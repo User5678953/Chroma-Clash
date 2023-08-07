@@ -26,7 +26,7 @@ body {
     <!--Game Board-->
     <section class="game-board">
         <!--Tiles div-->
-            <div class="tiles-container"></div>
+        <div class="tiles-container"></div>
     </section>
 
      <!--Player prompt area-->
@@ -75,6 +75,7 @@ function countDown() {
     },1000)
 }
 
+
 // Event listener for the Start Game button
 const startGameButton = document.querySelector('.start-game-button');
 startGameButton.addEventListener('click', startGame);
@@ -84,18 +85,6 @@ function startGame () {
     updateTimer(60)
     countDown()
 }
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
     <script src="js/main.js"></script>
