@@ -10,6 +10,7 @@
 
 //generate 1 tile test!
 const totalTiles = 12
+
 function generateTile() {
 const tile = document.createElement('div')
 tile.classList.add('tile')
@@ -24,4 +25,3 @@ for (let i=0; i < totalTiles; i++){
    const tile =generateTile() 
 tilesContainer.appendChild(tile)
 }
-generateTile()
