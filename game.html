@@ -34,7 +34,16 @@ body {
     
     <button class="reset-button">Reset Game</button>
 <script>
+//Background color change
+const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F']
+    function changeBackgroundcolor () {
+        //DOM reference to divs
+        const body = document.querySelector('body')
+        const randomColor = colors[Math.floor(Math.random()* colors.length)]
+        body.style.backgroundColor = randomColor
+    }
 
+    changeBackgroundcolor()
 
 
 // event listener to the reset button
