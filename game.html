@@ -33,6 +33,7 @@ body {
      <div class="player-prompt" id="player-prompt">PLAYER PROMPT PLACEHOLDER</div>
     
     <button class="reset-button">Reset Game</button>
+    <button class="start-game-button">Start Game</button>
 <script>
     //Background color change
 const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F']
@@ -67,7 +68,11 @@ function countDown() {
     let seconds = 60
     const countDownInterval = setInterval (() => {
         seconds --
-        updateTimer(seconds)
+        if (seconds < 0) {
+            clearInterval(countDownInterval)
+        }else{
+            updateTimer(seconds)
+        }
     },1000)
 }
 countDown()
