@@ -9,7 +9,7 @@
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
 //generate 1 tile test!
-const totalTiles = 12
+const totalTiles = 16
 
 function generateTile() {
 const tile = document.createElement('div')
