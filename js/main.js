@@ -13,7 +13,12 @@ const testColor = 'blue'
 function generateTile(testColor) {
 const tile = document.createElement('div')
 tile.classList.add('tile')
-tile.style.testColor = testColor
+tile.style.backgroundColor = testColor
 return tile
 }
-generateTile()
+generateTile(testColor)
+
+//display the genrated tile
+const singleTile = generateTile(testColor)
+const tilesContainer = document.querySelector('.tiles-container')
+tilesContainer.appendChild(singleTile)
