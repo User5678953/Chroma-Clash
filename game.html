@@ -46,7 +46,6 @@ const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F'
 
     changeBackgroundcolor()
 
-
 // event listener to the reset button
 const resetButton = document.querySelector('.reset-button');
     resetButton.addEventListener('click', resetGame);
@@ -76,6 +75,28 @@ function countDown() {
     },1000)
 }
 countDown()
+
+// Event listener for the Start Game button
+const startGameButton = document.querySelector('.start-game-button');
+startGameButton.addEventListener('click', startGame);
+
+//Start game
+function startGame () {
+    updateTimer(60)
+    countDown()
+}
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
     <script src="js/main.js"></script>
