@@ -34,7 +34,7 @@ body {
     
     <button class="reset-button">Reset Game</button>
 <script>
-//Background color change
+    //Background color change
 const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F']
     function changeBackgroundcolor () {
         //DOM reference to divs
@@ -48,25 +48,24 @@ const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F'
 
 // event listener to the reset button
 const resetButton = document.querySelector('.reset-button');
-resetButton.addEventListener('click', resetGame);
+    resetButton.addEventListener('click', resetGame);
 
 // Reset game 
 function resetGame() {
     // Refresh the page
     window.location.reload();
 }
+//Timer Change logic
+function countDown() {
+    let seconds = 60
+    const countDownInterval = setInterval (() => {
+        seconds -- 
+    }
+
+
+}
 </script>
 
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
-<!--Basic layout, I need score in top right, timer in left, reset game button that refreshes the page, player prompt in bottom-->
-
-<!--I need a game board that has 12-16 tiles
-I think placing the tiles in a div container called tiles
-then placing class called .tiles will allow me to use js to loop over and spawn tiles randomLY
-next I want to make the tiles spawn from 1 js function that loops from an array of colors
-the js function should make 2 copies of each color to have matches. 
--->
