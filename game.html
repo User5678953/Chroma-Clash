@@ -57,16 +57,20 @@ function resetGame() {
 }
 
 //Display countdown for timer update
-function updateTimer(seconds)
-    const timerElement = document.getElementById('timer')
+function updateTimer(seconds) {
+    const timerElement = document.getElementById('timer');
     timerElement.textContent = seconds
+}
+
 //Timer Change logic
 function countDown() {
     let seconds = 60
     const countDownInterval = setInterval (() => {
-        seconds -- 
-    })
+        seconds --
+        updateTimer(seconds)
+    },1000)
 }
+countDown()
 </script>
 
     <script src="js/main.js"></script>
