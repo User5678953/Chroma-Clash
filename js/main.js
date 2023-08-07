@@ -9,16 +9,19 @@
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
 //generate 1 tile test!
-const testColor = 'blue'
-function generateTile(testColor) {
+const totalTiles = 12
+function generateTile() {
 const tile = document.createElement('div')
 tile.classList.add('tile')
-tile.style.backgroundColor = testColor
+
 return tile
 }
-generateTile(testColor)
 
-//display the genrated tile
-const singleTile = generateTile(testColor)
+//for loop to iterate totalTiles and genrate multiple  
+
 const tilesContainer = document.querySelector('.tiles-container')
-tilesContainer.appendChild(singleTile)
+for (let i=0; i < totalTiles; i++){
+   const tile =generateTile() 
+tilesContainer.appendChild(tile)
+}
+generateTile()
