@@ -46,6 +46,8 @@ tile.addEventListener('click', () => {
     
     }
 })
+    // Initialize with random gray color
+    tile.style.backgroundColor = setRandomGrayColor()
 
     return tile
 }
