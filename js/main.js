@@ -12,21 +12,16 @@ const totalTiles = 12
 //https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 //I can use this shuffle algorithm to ensure the array shuffles in place and all combos are equally likely.
 
-// generate duplicate bright color array 
-const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
 
-//shuffle the array 
-shuffleArray(duplicateBrightColors)
+// Generate random gray and once and store them in arrays
+const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 
-
-// Generate random gray and bright colors once and store them in arrays
-const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor);
-const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor);
+//Generate random bright colors and store them in an array
+const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor)
 
 //random color for flipped tile
 function setRandomBrightColor(){
     const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
-    
     const randomColorIndex = Math.floor(Math.random() * brightColors.length)
     return brightColors[randomColorIndex]
 }
@@ -38,8 +33,20 @@ function setRandomGrayColor(){
     return grayColors[randomColorIndex]
 }
 
+// generate duplicate bright color array 
+const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
+
+// // Shuffle the array using Fisher-Yates algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+    }
+shuffleArray(duplicateBrightColors)
+
 //generate tile initially 
-function generateTile(index) {
+function generateTile(index, color) {
 const tile = document.createElement('div')
 tile.classList.add('tile')
 
@@ -53,7 +60,7 @@ tile.addEventListener('click', () => {
     if(tile.dataset.flipped === 'false') {
         //if not flipped
         tile.dataset.flipped = 'true'
-        tile.style.backgroundColor = randomBrightColor[index]
+        tile.style.backgroundColor = color
     }else{
         //if tile is flipped, reset the tile
         tile.dataset.flipped = 'false'
@@ -70,7 +77,7 @@ tile.addEventListener('click', () => {
 function generateAllTiles(){
     const tilesContainer = document.querySelector('.tiles-container')
     for (let i=0; i < totalTiles; i++){
-    const tile = generateTile(i) 
+    const tile = generateTile(i, duplicateBrightColors[i]) 
     tilesContainer.appendChild(tile)
     }
 }
