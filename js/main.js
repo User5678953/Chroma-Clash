@@ -5,17 +5,18 @@ const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 
 //generate pairs of bright colors and store in array
 const pairsOfBrightColors =generatePairsOfBrightColors()
-shuffleArray(pairsOfBrightColors)
-
+//shuffleArray(pairsOfBrightColors)
+console.log('this is the bright color pairs array' ,pairsOfBrightColors);
 
 document.addEventListener('DOMContentLoaded', () => {
 
 
 //for loop to iterate totalTiles and genrate multiple  
 function generateAllTiles(){
+    console.log('this is bright pairs', pairsOfBrightColors)
     const tilesContainer = document.querySelector('.tiles-container')
     for (let i=0; i < totalTiles; i++){
-    const tile = generateTile(i, pairsOfBrightColors[i], randomGrayColor) 
+    const tile = generateTile(i, pairsOfBrightColors[i]) 
     tilesContainer.appendChild(tile)
     }
 }
@@ -24,29 +25,31 @@ generateAllTiles()
 
 // Shuffle the array using Fisher-Yates algorithm
 function shuffleArray(array) {
+    console.log("Before shuffle:", array);
     let j
     for (let i = array.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1))
+        console.log(`Swapping position ${i} with position ${j}`);
         [array[i], array[j]] = [array[j], array[i]]
     }
+    console.log("After shuffle:", array);
 }
 
 //generate pairs of colors 
 function generatePairsOfBrightColors (){
-    const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
+    const brightColors = ['#0000FF', '#00FF00', '#FF00FF', '#FFFF00', '#00FFFF', '#FF0000']
     const pairs = []
 
     for (const color of brightColors) {
         pairs.push(color,color)
     }
-
     shuffleArray(pairs)
     return pairs
 }
 
 //random color for flipped tile
 function setRandomBrightColor(){
-    const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
+    const brightColors =  ['#007BFF', '#FF0000', '#28A745', '#FFC107', '#6F42C1', '#FD7E14']
     const randomColorIndex = Math.floor(Math.random() * brightColors.length)
     return brightColors[randomColorIndex]
 }
@@ -69,7 +72,7 @@ tile.dataset.flipped = false;
 
 //event listner for user click
 tile.addEventListener('click', () => {
-    console.log('tile clicked')    
+    console.log(`Setting tile color to: ${color}`)
     //is the tile already flipped?
     if(tile.dataset.flipped === 'false') {
         //if not flipped
@@ -84,7 +87,7 @@ tile.addEventListener('click', () => {
 })
     // Initialize with random gray color
     tile.style.backgroundColor = randomGrayColor[index]
-
+    console.log('This is the tile color',color);
     return tile
 }
 
