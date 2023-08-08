@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const totalTiles = 12
 
+//problem: need colors to appear only 2 times in the genrate tile grid. 
+//i already have the genrate tile function
+//I have the array of bright colors
+//I want to duplicate each color in the array to make a pair
+//I will shuffle the array to mix the colors 
+//I will the use the new shuffled array to assign the colors to the tiles during the generatetile function ()
+//After tile generation, need to pop colors that have been assigned more than 2 times. 
+
+
+
+
 // Generate random gray and bright colors once and store them in arrays
 const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor);
 const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor);
@@ -9,6 +20,7 @@ const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColo
 //random color for flipped tile
 function setRandomBrightColor(){
     const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
+    
     const randomColorIndex = Math.floor(Math.random() * brightColors.length)
     return brightColors[randomColorIndex]
 }
