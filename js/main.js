@@ -9,8 +9,14 @@ const totalTiles = 12
 //I will shuffle the array to mix the colors 
 //I will the use the new shuffled array to assign the colors to the tiles during the generatetile function ()
 //After tile generation, need to pop colors that have been assigned more than 2 times. 
+//https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+//I can use this shuffle algorithm to ensure the array shuffles in place and all combos are equally likely.
 
+// generate duplicate bright color array 
+const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
 
+//shuffle the array 
+shuffleArray(duplicateBrightColors)
 
 
 // Generate random gray and bright colors once and store them in arrays
