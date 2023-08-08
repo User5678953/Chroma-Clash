@@ -9,7 +9,9 @@
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
 //generate 1 tile test!
-const tileColors = ['#FFFF99', '#000080', '#00FF00', '#800000', '#CC99FF', '#FF6600']
+const tileColors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F',
+'#F0F0F0', '#D0D0D0', '#B0B0B0', '#909090', '#707070', '#505050'
+]
 const totalTiles = 12
 
 function generateTile() {
