@@ -1,4 +1,4 @@
-
+document.addEventListener('DOMContentLoaded', () => {
 //Main approach
     //Define an array of colors: Create an array with the colors for the tiles.
     //Generate Tiles: Write a function that loops over the colors array and creates pairs of tiles with matching colors.
@@ -8,33 +8,54 @@
     //Timer Countdown: Create a timer that counts down from a set time and ends the game when it reaches zero.
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
-//generate 1 tile test!
-const tileColors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F',
-'#F0F0F0', '#D0D0D0', '#B0B0B0', '#909090', '#707070', '#505050'
-]
+//random color for flipped tile
+function setRandomBrightColor(){
+    const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
+    const randomColorIndex = Math.floor(Math.random() * brightColors.length)
+    return brightColors[randomColorIndex]
+}
+
+//random Gray color for unflipped tile
+function setRandomGrayColor(){
+    const grayColors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F', '#F0F0F0', '#D0D0D0', '#B0B0B0', '#909090', '#707070', '#505050']
+    const randomColorIndex = Math.floor(Math.random() * grayColors.length)
+    return grayColors[randomColorIndex]
+}
+
 const totalTiles = 12
 
 function generateTile() {
 const tile = document.createElement('div')
 tile.classList.add('tile')
 
-//random color for tile
-const randomColorIndex = Math.floor(Math.random() * tileColors.length)
-    const randomColor = tileColors[randomColorIndex]
+//Initial state, unflipped
+tile.dataset.flipped = false;
+
+//event listner for user click
+tile.addEventListener('click', () => {
+    console.log('tile clicked')    
+    //is the tile already flipped?
+    if(tile.dataset.flipped === 'false') {
+        //if not flipped
+        tile.dataset.flipped = 'true'
+        tile.style.backgroundColor = setRandomBrightColor()
+    }else{
+        //if tile is flipped, reset the tile
+        tile.dataset.flipped = 'false'
+        tile.style.backgroundColor = setRandomGrayColor()
     
- // Set the background color of the tile
- tile.style.backgroundColor = randomColor
+    }
+})
 
-
-return tile
+    return tile
 }
-
 //for loop to iterate totalTiles and genrate multiple  
 function generateAllTiles(){
     const tilesContainer = document.querySelector('.tiles-container')
     for (let i=0; i < totalTiles; i++){
-   const tile =generateTile() 
+   const tile = generateTile() 
     tilesContainer.appendChild(tile)
     }
 }
 generateAllTiles()
+})

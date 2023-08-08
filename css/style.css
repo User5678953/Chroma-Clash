@@ -54,7 +54,7 @@ html, body {
     text-align: center;
 }
 .top-banner h1 {
-    font-size: 72;
+    font-size: 62;
 }
 
 h6 {
@@ -120,13 +120,12 @@ h6 {
     gap: 8px;
     box-sizing: border-box;
     border: 8px solid #006767;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 10px;
 }
 .tile {
  height: 200px;
  width: 200px;
- background: blue;
  border: 5px solid #fff;
  border-radius: 10px;
  cursor: pointer;
@@ -145,8 +144,8 @@ h6 {
 .start-game-button {
     color: #fff;
     background-color: #008080;
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 20px 30px;
+    font-size: 24px;
     text-align: center;
     border: none;
     cursor: pointer;
@@ -166,8 +165,8 @@ h6 {
 .reset-button {
     color: #fff;
     background-color: #008080;
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 20px 30px;
+    font-size: 24px;
     text-align: center;
     border: none;
     cursor: pointer;
