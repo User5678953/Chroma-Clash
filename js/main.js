@@ -9,11 +9,20 @@
     //Player Turns: Keep track of player turns and update the player prompt accordingly.
 
 //generate 1 tile test!
+const tileColors = ['#FFFF99', '#000080', '#00FF00', '#800000', '#CC99FF', '#FF6600']
 const totalTiles = 12
 
 function generateTile() {
 const tile = document.createElement('div')
 tile.classList.add('tile')
+
+//random color for tile
+const randomColorIndex = Math.floor(Math.random() * tileColors.length)
+    const randomColor = tileColors[randomColorIndex]
+    
+ // Set the background color of the tile
+ tile.style.backgroundColor = randomColor
+
 
 return tile
 }
