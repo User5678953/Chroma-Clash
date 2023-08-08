@@ -90,5 +90,16 @@ tile.addEventListener('click', () => {
     console.log('This is the tile color',color);
     return tile
 }
+//Match Logic
+//I want to create a function that compares the colors of the player selected cards in the flipped state. 
+//if the colors are a match, the selected cards will stay flipped (revealed) and award 1 point to the player whose turn it is, then the player prompt area will update to prompt the next player
+//if the selected cards are not a match, the cards will remain visible for a short time, then flip back over. no points will be awarded and the player prompt area will update to prompt the next player.
+//when a player prompt is updated, the timer will begin a countdown from 60 seconds
+//if no 2 cards are not selected within the timer range and or the timer reaches 0, the player prompt area will update to prompt the next player. 
+//the game is over whenever any player reaches 10 matches. 
+
+function checkColorMatch (selectedTiles) {
+    const [tile1, tile2] = selectedTiles
+}
 
 
