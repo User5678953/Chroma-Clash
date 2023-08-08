@@ -19,6 +19,20 @@ const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 //Generate random bright colors and store them in an array
 const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor)
 
+// generate duplicate bright color array 
+const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
+
+// Shuffle the array using Fisher-Yates algorithm
+function shuffleArray(array) {
+    let j
+    for (let i = array.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1))
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+    }
+shuffleArray(duplicateBrightColors)
+
+
 //random color for flipped tile
 function setRandomBrightColor(){
     const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
@@ -32,18 +46,6 @@ function setRandomGrayColor(){
     const randomColorIndex = Math.floor(Math.random() * grayColors.length)
     return grayColors[randomColorIndex]
 }
-
-// generate duplicate bright color array 
-const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
-
-// // Shuffle the array using Fisher-Yates algorithm
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        [array[i], array[j]] = [array[j], array[i]]
-    }
-    }
-shuffleArray(duplicateBrightColors)
 
 //generate tile initially 
 function generateTile(index, color) {
