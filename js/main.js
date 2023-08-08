@@ -6,9 +6,9 @@ const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 //generate pairs of bright colors and store in array
 const pairsOfBrightColors =generatePairsOfBrightColors()
 //shuffleArray(pairsOfBrightColors)
-console.log('this is the bright color pairs array' ,pairsOfBrightColors);
+    console.log('this is the bright color pairs array' ,pairsOfBrightColors);
 
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
 
 
 //for loop to iterate totalTiles and genrate multiple  
@@ -64,11 +64,11 @@ function setRandomGrayColor(){
 
 //generate tile initially 
 function generateTile(index, color) {
-const tile = document.createElement('div')
-tile.classList.add('tile')
+    const tile = document.createElement('div')
+    tile.classList.add('tile')
 
 //Initial state, unflipped
-tile.dataset.flipped = false;
+    tile.dataset.flipped = false;
 
 //event listner for user click
 tile.addEventListener('click', () => {
