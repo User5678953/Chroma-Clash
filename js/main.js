@@ -15,23 +15,9 @@ const totalTiles = 12
 
 // Generate random gray and once and store them in arrays
 const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
+const pairsOfBrightColors =generatePairsOfBrightColors()
 
-//Generate random bright colors and store them in an array
-const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor)
-
-// generate duplicate bright color array 
-const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
-
-// Shuffle the array using Fisher-Yates algorithm
-function shuffleArray(array) {
-    let j
-    for (let i = array.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1))
-        [array[i], array[j]] = [array[j], array[i]]
-    }
-    }
-shuffleArray(duplicateBrightColors)
-
+shuffleArray(pairsOfBrightColors)
 
 //random color for flipped tile
 function setRandomBrightColor(){
@@ -45,6 +31,37 @@ function setRandomGrayColor(){
     const grayColors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F', '#F0F0F0', '#D0D0D0', '#B0B0B0', '#909090', '#707070', '#505050']
     const randomColorIndex = Math.floor(Math.random() * grayColors.length)
     return grayColors[randomColorIndex]
+}
+
+
+//Generate random bright colors and store them in an array
+const randomBrightColor = Array.from({ length: totalTiles }, setRandomBrightColor)
+
+// generate duplicate bright color array 
+//const duplicateBrightColors = randomBrightColor.concat(randomBrightColor)
+
+// Shuffle the array using Fisher-Yates algorithm
+
+function shuffleArray(array) {
+    let j
+    for (let i = array.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1))
+        [array[i], array[j]] = [array[j], array[i]]
+    }
+    }
+shuffleArray(pairsOfBrightColors)
+
+//generate pairs of colors 
+function generatePairsOfBrightColors (){
+    const brightColors = ['#FF5733', '#FFC300', '#FF85A1', '#40E0D0', '#FF6B81', '#FFD700']
+    const pairs = []
+
+    for (const color of brightColors) {
+        pairs.push(color,color)
+    }
+
+    shuffleArray(pairs)
+    return pairs
 }
 
 //generate tile initially 
@@ -79,7 +96,7 @@ tile.addEventListener('click', () => {
 function generateAllTiles(){
     const tilesContainer = document.querySelector('.tiles-container')
     for (let i=0; i < totalTiles; i++){
-    const tile = generateTile(i, duplicateBrightColors[i]) 
+    const tile = generateTile(i, pairsOfBrightColors[i]) 
     tilesContainer.appendChild(tile)
     }
 }
