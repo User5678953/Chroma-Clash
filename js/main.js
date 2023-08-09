@@ -7,7 +7,7 @@ const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 const pairsOfBrightColors =generatePairsOfBrightColors()
 console.log('this is the bright color pairs array' ,pairsOfBrightColors);
 
-document.addEventListener('DOMContentLoaded', () => {
+
 
     //for loop to iterate totalTiles and genrate multiple  
     function generateAllTiles(){
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     generateAllTiles()
-})
+
 
 // Shuffle the array using Fisher-Yates algorithm
 function shuffleArray(array) {
@@ -104,6 +104,15 @@ function checkColorMatch (tile1, tile2, tiles) {
     //match found
     if (color1 === color2) {
         console.log('matched')
+
+        //add matched class
+        tile1.classList.add('matched')
+        tile2.classList.add('matched')
+
+        //remove Event listner to disable reselsction on match
+        tile1.removeEventListener('click', tileClickHandler)
+        tile2.removeEventListener('click', tileClickHandler)
+
     } else {
         console.log('No match')
 
@@ -120,32 +129,32 @@ function checkColorMatch (tile1, tile2, tiles) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
     const tiles = document.querySelectorAll('.tile')
     //store user selection
     let selectedTiles =[]
     
-    //click event fo every ttile generated
-    tiles.forEach((tile) => {
-        tile.addEventListener('click', () => {
-            
-            if (tile.classList.contains('matched')) {
-                return
-            }
-           
-            if (selectedTiles.length < 2) {
-                selectedTiles.push(tile)
-                tile.style.border = '5px solid #006767'
-            }
-    
-                if (selectedTiles.length === 2) {
-                    checkColorMatch(selectedTiles[0], selectedTiles[1], tiles)
-                    selectedTiles.forEach((selectedTile) => {
-                        selectedTile.style.border = '5px solid #fff'
-                    });
-                    selectedTiles = []
+    function tileClickHandler() {
+        if (this.classList.contains('matched')) {
+            return
         }
 
-        })
+        if (selectedTiles.length < 2) {
+                selectedTiles.push(this)
+                this.style.border = '5px solid #006767'
+        }
+    
+        if (selectedTiles.length === 2) {
+            checkColorMatch(selectedTiles[0], selectedTiles[1], tiles)
+            selectedTiles.forEach((selectedTile) => {
+                selectedTile.style.border = '5px solid #fff'
+            });
+            selectedTiles = []
+         }
+
+    }
+
+//click event fo every ttile generated
+    tiles.forEach((tile) => {
+        tile.addEventListener('click', tileClickHandler)
     })
-})
+
