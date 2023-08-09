@@ -158,3 +158,8 @@ function checkColorMatch (tile1, tile2, tiles) {
         tile.addEventListener('click', tileClickHandler)
     })
 
+//scoring system logic
+//player objects to store constants
+//initialize player 1 turn as default
+//I want to switch player turns, I can add this to the click handler function I think
+//I want to update and display the scores dynamically to the html
