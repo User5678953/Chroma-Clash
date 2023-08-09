@@ -1,3 +1,29 @@
+const player1 = {
+    score: 0,
+    name: 'Player 1'
+}
+
+const player2 = {
+    score: 0,
+    name: 'Player 2'
+}
+
+//Dom references for score and prompt
+const player1ScoreElement = document.getElementById('player1-score')
+const player2ScoreElement = document.getElementById('player2-score')
+const currentPlayerPrompt = document.getElementById('player-prompt')
+
+//default player turn
+let currentPlayer = player1
+
+//switch player logic
+function switchPlayer(){
+    currentPlayer = currentPlayer === 1 ? 2: 1
+    currentPlayerPrompt.textContent = `Current Player: Player ${currentPlayer}`
+}
+
+
+
 const totalTiles = 12
 
 // Generate random gray and once and store them in arrays
@@ -104,6 +130,15 @@ function checkColorMatch (tile1, tile2, tiles) {
     //match found
     if (color1 === color2) {
         console.log('matched')
+        
+        // Update score
+        if(currentPlayer === 1) {
+            scores.player1 += 1;
+            player1ScoreElement.textContent = `Player 1: ${scores.player1}`;
+        } else {
+            scores.player2 += 1;
+            player2ScoreElement.textContent = `Player 2: ${scores.player2}`;
+        }
 
         //add matched class
         tile1.classList.add('matched')
@@ -127,6 +162,8 @@ function checkColorMatch (tile1, tile2, tiles) {
             tile2.dataset.flipped = 'false'
         }, 1000); 
     }
+            //switch player turn
+            switchPlayer()
 }
 
     const tiles = document.querySelectorAll('.tile')
@@ -163,3 +200,4 @@ function checkColorMatch (tile1, tile2, tiles) {
 //initialize player 1 turn as default
 //I want to switch player turns, I can add this to the click handler function I think
 //I want to update and display the scores dynamically to the html
+
