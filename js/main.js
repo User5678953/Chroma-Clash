@@ -98,8 +98,50 @@ tile.addEventListener('click', () => {
 //if no 2 cards are not selected within the timer range and or the timer reaches 0, the player prompt area will update to prompt the next player. 
 //the game is over whenever any player reaches 10 matches. 
 
-function checkColorMatch (selectedTiles) {
-    const [tile1, tile2] = selectedTiles
+function checkColorMatch (tile1, tile2, tiles) {
+    const color1 = tile1.style.backgroundColor
+    const color2 = tile2.style.backgroundColor
+
+    console.log(`Checking color match: ${color1} and ${color2}`)
+
+    //match found
+    if (color1 === color2) {
+        console.log('matched')
+    } else {
+        console.log('No match')
+
+   // Delay before resetting colors
+        setTimeout(() => {
+            //reset colors with delay
+            tiles.forEach(tile => {
+                tile.style.backgroundColor = randomGrayColor[tile.dataset.index]
+            })
+        }, 1000) 
+    }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const tiles = document.querySelectorAll('.tile')
+    //store user selection
+    let selectedTiles =[]
+    
+    //click event fo every ttile generated
+    tiles.forEach((tile) => {
+        tile.addEventListener('click', () => {
+            if (selectedTiles.length < 2) {
+                selectedTiles.push(tile)
+                tile.style.border = '5px solid red'
+            }
+    
+                if (selectedTiles.length === 2) {
+                    checkColorMatch(selectedTiles[0], selectedTiles[1])
+                    selectedTiles.forEach((selectedTile) => {
+                        selectedTile.style.border = '5px solid #fff'
+                    });
+                    selectedTiles = []
+        }
+
+        })
+    })
+})
 
