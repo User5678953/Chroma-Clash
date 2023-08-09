@@ -181,6 +181,10 @@ h6 {
 .reset-button:active {
     background-color: #006767;
 }
+.matched {
+    pointer-events: none;
+    opacity: 0.6;
+}
 @media screen and (max-width: 768px) {
     .tiles-container {
       grid-template-columns: repeat(2, 1fr);
