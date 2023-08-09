@@ -98,10 +98,17 @@ function generateTile(index, color) {
     //event listner for user click
     tile.addEventListener('click', () => {
         console.log(`Setting tile color to: ${color}`)
+        
+        // Check if the tile is already matched
+        if (tile.classList.contains('matched')) {
+            return  // Don't do anything if it's a matched tile
+        }
+        
         //is the tile already flipped?
         if(tile.dataset.flipped === 'false') {
             //if not flipped
             tile.dataset.flipped = 'true'
+            
             tile.style.backgroundColor = color
         }else{
             //if tile is flipped, reset the tile
@@ -165,9 +172,34 @@ tiles.forEach(tile => tile.style.pointerEvents = 'none')
             // Re-enable all tiles
             tiles.forEach(tile => tile.style.pointerEvents = 'auto')
         }, 1000); 
-    }
+    }       
+            //check win condition 
+            checkWinCondition()
+
             //switch player turn
             switchPlayer()
+}
+//Check win condition function
+function checkWinCondition () {
+    const totalMatchesNeeded = totalTiles / 2
+
+    //check current player score
+    if (player1.score + player2.score === totalMatchesNeeded){
+
+        //player 1 win scenario
+        if (player1.score > player2.score) {
+            currentPlayerPrompt.textContent = 'Player 1 wins!'
+        
+        //player 2 win scenraio
+        } else if (player2.score > player1.score) {
+            currentPlayerPrompt.textContent = 'Player 2 wins!'
+            
+        //player tie
+        } else {
+            currentPlayerPrompt.textContent = "It's a Tie!"
+        }
+
+    }
 }
 
     const tiles = document.querySelectorAll('.tile')
@@ -176,8 +208,11 @@ tiles.forEach(tile => tile.style.pointerEvents = 'none')
     
     function tileClickHandler() {
         if (this.classList.contains('matched')) {
+            console.log('Matched tile clicked, skipping')
             return
         }
+
+        console.log('Regular tile clicked, processing')
 
         if (selectedTiles.length < 2) {
                 selectedTiles.push(this)
@@ -185,11 +220,16 @@ tiles.forEach(tile => tile.style.pointerEvents = 'none')
         }
     
         if (selectedTiles.length === 2) {
+        
+    
             checkColorMatch(selectedTiles[0], selectedTiles[1], tiles)
             selectedTiles.forEach((selectedTile) => {
                 selectedTile.style.border = '5px solid #fff'
             });
             selectedTiles = []
+            
+            //check the win condition with function
+            checkWinCondition()
          }
 
     }
@@ -198,10 +238,3 @@ tiles.forEach(tile => tile.style.pointerEvents = 'none')
     tiles.forEach((tile) => {
         tile.addEventListener('click', tileClickHandler)
     })
-
-//scoring system logic
-//player objects to store constants
-//initialize player 1 turn as default
-//I want to switch player turns, I can add this to the click handler function I think
-//I want to update and display the scores dynamically to the html
-

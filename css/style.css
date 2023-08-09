@@ -94,14 +94,19 @@ h6 {
 }
 .game-updates {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding:10px;
-    font-size: 36px;
+    font-size: 50px;
 }
 .score {
     color:#fff;
     font-weight: bold;
-    font-family: 'Anton', sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Anton';
 }   
 .timer {
     font-size: 24px;
@@ -138,30 +143,15 @@ h6 {
     align-items: center;
     justify-content: center;
     height: 10vh;
-    font-size: 24px;
+    font-size: 50px;
     font-weight: bold;
 }
-.start-game-button {
-    color: #fff;
-    background-color: #008080;
-    padding: 20px 30px;
-    font-size: 24px;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 20px;
+.button-container {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-    margin-left: auto;
 }
-.start-game-button:hover {
-    background-color: #00b2b2;
-}
-
-.start-game-button:active {
-    background-color: #006767;
-}
-
+.start-game-button,
 .reset-button {
     color: #fff;
     background-color: #008080;
@@ -170,10 +160,18 @@ h6 {
     text-align: center;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 5px auto;
     margin-bottom: 20px;
     margin-top: 20px;
     margin-left: auto;
+    margin-right: auto;
+}
+.start-game-button:hover {
+    background-color: #00b2b2;
+}
+
+.start-game-button:active {
+    background-color: #006767;
 }
 .reset-button:hover {
     background-color: #00b2b2;
@@ -181,9 +179,32 @@ h6 {
 .reset-button:active {
     background-color: #006767;
 }
+#player1-score,
+#player2-score {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+#player1-score{
+    color: #fff;
+    background-color: #008080;
+    margin-bottom: 40px;
+}
+#player2-score{
+  color: #fff;
+  background-color: #008080;
+  margin-top: 40px;
+}
 .matched {
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.8;
+    
 }
 @media screen and (max-width: 768px) {
     .tiles-container {
