@@ -18,11 +18,9 @@ let currentPlayer = player1
 
 //switch player logic
 function switchPlayer(){
-    currentPlayer = currentPlayer === 1 ? 2: 1
-    currentPlayerPrompt.textContent = `Current Player: Player ${currentPlayer}`
+    currentPlayer = (currentPlayer === player1) ? player2: player1
+    currentPlayerPrompt.textContent = `Current Player: ${currentPlayer.name}`
 }
-
-
 
 const totalTiles = 12
 
@@ -130,14 +128,14 @@ function checkColorMatch (tile1, tile2, tiles) {
     //match found
     if (color1 === color2) {
         console.log('matched')
-        
+
         // Update score
-        if(currentPlayer === 1) {
-            scores.player1 += 1;
-            player1ScoreElement.textContent = `Player 1: ${scores.player1}`;
+        currentPlayer.score += 1
+
+        if(currentPlayer === player1) {
+            player1ScoreElement.textContent = `${currentPlayer.name}: ${currentPlayer.score}`
         } else {
-            scores.player2 += 1;
-            player2ScoreElement.textContent = `Player 2: ${scores.player2}`;
+            player2ScoreElement.textContent = `${currentPlayer.name}: ${currentPlayer.score}`
         }
 
         //add matched class
@@ -151,6 +149,9 @@ function checkColorMatch (tile1, tile2, tiles) {
     } else {
         console.log('No match')
 
+// Disable all tiles
+tiles.forEach(tile => tile.style.pointerEvents = 'none')
+
         // Delay before resetting colors
         setTimeout(() => {
             //reset colors with delay
@@ -160,6 +161,9 @@ function checkColorMatch (tile1, tile2, tiles) {
             //Reset flipped state
             tile1.dataset.flipped = 'false'
             tile2.dataset.flipped = 'false'
+        
+            // Re-enable all tiles
+            tiles.forEach(tile => tile.style.pointerEvents = 'auto')
         }, 1000); 
     }
             //switch player turn
