@@ -68,7 +68,9 @@ function generateTile(index, color) {
     tile.classList.add('tile')
 
 //Initial state, unflipped
-    tile.dataset.flipped = false;
+    tile.dataset.flipped = false
+// Store original gray color in a data attribute
+tile.dataset.originalColor = randomGrayColor[index]
 
 //event listner for user click
 tile.addEventListener('click', () => {
@@ -114,7 +116,7 @@ function checkColorMatch (tile1, tile2, tiles) {
         setTimeout(() => {
             //reset colors with delay
             tiles.forEach(tile => {
-                tile.style.backgroundColor = randomGrayColor[tile.dataset.index]
+                tile.style.backgroundColor = tile.dataset.originalColor
             })
         }, 1000) 
     }
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     
                 if (selectedTiles.length === 2) {
-                    checkColorMatch(selectedTiles[0], selectedTiles[1])
+                    checkColorMatch(selectedTiles[0], selectedTiles[1], tiles)
                     selectedTiles.forEach((selectedTile) => {
                         selectedTile.style.border = '5px solid #fff'
                     });
