@@ -12,13 +12,18 @@ body {
     </style>
 </head>
 <body>
-    <div class="top-banner" id="top-banner">
-        <h1>Chromat-a-Clash</h1>
-    </div>
+
      <!--Timer and Score Updates -->
      <div class="game-updates">
-        <div class="score" id="player1-score">Player 1: 0</div>
-        <div class="score" id="player2-score">Player 2: 0</div>
+        <div class="player-score" id="player1-score">
+            <span class="player-name">Player 1:</span>
+            <span class="score-value"></span>
+         </div>
+        
+        <div class="player-score" id="player2-score">
+            <span class="player-name">Player 2:</span>
+            <span class="score-value"></span>
+        </div>
     </div>
 
     <div class="timer"><span id="timer">60</span> Seconds!</div>
@@ -48,16 +53,13 @@ const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F'
         body.style.backgroundColor = randomColor
     }
 
-    changeBackgroundcolor()
-
 // event listener to the reset button
 const resetButton = document.querySelector('.reset-button');
     resetButton.addEventListener('click', resetGame);
 
 // Reset game 
 function resetGame() {
-    // Refresh the page
-    window.location.reload();
+   location.reload()
 }
 
 //Display countdown for timer update
@@ -81,14 +83,14 @@ function countDown() {
 
 
 // Event listener for the Start Game button
-const startGameButton = document.querySelector('.start-game-button');
-startGameButton.addEventListener('click', startGame);
+const startGameButton = document.querySelector('.start-game-button')
+startGameButton.addEventListener('click', startGame)
 
 //Start game
 function startGame () {
     updateTimer(60)
     countDown()
-    currentPlayerPrompt.textContent = "Let's Go!"
+    currentPlayerPrompt.textContent = "Pick a tile, any tile!"
 }
 </script>
 

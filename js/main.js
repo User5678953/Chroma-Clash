@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', () => {
+    randomizeTileBorders()
+    changeBackgroundcolor()
+})
+
 const player1 = {
     score: 0,
     name: 'Player 1'
@@ -9,16 +14,31 @@ const player2 = {
 }
 
 const funPhrases = [
-    "{player}, step up to the challenge!",
-    "{player}, it's your time to shine!",
-    "{player}, take the lead!",
-    "{player}, show 'em what you've got!",
-    "{player}, you're on!",
-    "{player}, dazzle us!",
-    "{player}, make your move!",
-    "{player}, let's see your skills!",
-    "{player}, it's game time!"
+    "{player}, step up to the challenge! 💪",
+    "{player}, it's your time to shine! 🌟",
+    "{player}, take the lead! 🚀",
+    "{player}, show 'em what you've got! 🔥",
+    "{player}, you're on! 🎯",
+    "{player}, dazzle us! ✨",
+    "{player}, make your move! 🕺",
+    "{player}, let's see your skills! ",
+    "{player}, it's game time! 🕹",
+    "{player}, capture the moment! 📸",
+    "{player}, be unstoppable! 🌊",
+    "{player}, own the board! ",
+    "{player}, go for the win! 🏆",
+    "{player}, every move counts! ⏳"
 ]
+
+//randomize tile border
+function randomizeTileBorders() {
+    const tiles = document.querySelectorAll('.tile')
+    const randomRadius = Math.floor(Math.random() * 101)
+    console.log(randomRadius)
+    tiles.forEach(tile => {
+        tile.style.borderRadius = `${randomRadius}%`
+    })
+}
 
 //Dom references for score and prompt
 const player1ScoreElement = document.getElementById('player1-score')
@@ -40,7 +60,7 @@ function switchPlayer(){
     currentPlayerPrompt.textContent = saying; 
 }
 
-const totalTiles = 12
+const totalTiles = 24
 
 // Generate random gray and once and store them in arrays
 const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
@@ -78,7 +98,8 @@ function shuffleArray(array) {
 
 //generate pairs of colors 
 function generatePairsOfBrightColors (){
-    const brightColors = ['#0000FF', '#00FF00', '#FF00FF', '#FFFF00', '#00FFFF', '#FF0000']
+    const brightColors = ['#FF5050', '#00FFFF', '#9933FF', '#ADFF2F', '#1E90FF', '#FF0099', '#00CED1', '#FFCC00', '#BA55D3', '#20B2AA', '#FF6633', '#9370DB']
+                        
     const pairs = []
 
     for (const color of brightColors) {
@@ -158,9 +179,9 @@ function checkColorMatch (tile1, tile2, tiles) {
         currentPlayer.score += 1
 
         if(currentPlayer === player1) {
-            player1ScoreElement.textContent = `${currentPlayer.name}: ${currentPlayer.score}`
+            document.querySelector("#player1-score .score-value").textContent = currentPlayer.score
         } else {
-            player2ScoreElement.textContent = `${currentPlayer.name}: ${currentPlayer.score}`
+            document.querySelector("#player2-score .score-value").textContent = currentPlayer.score
         }
 
         //add matched class
