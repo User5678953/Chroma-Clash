@@ -8,6 +8,18 @@ const player2 = {
     name: 'Player 2'
 }
 
+const funPhrases = [
+    "{player}, step up to the challenge!",
+    "{player}, it's your time to shine!",
+    "{player}, take the lead!",
+    "{player}, show 'em what you've got!",
+    "{player}, you're on!",
+    "{player}, dazzle us!",
+    "{player}, make your move!",
+    "{player}, let's see your skills!",
+    "{player}, it's game time!"
+]
+
 //Dom references for score and prompt
 const player1ScoreElement = document.getElementById('player1-score')
 const player2ScoreElement = document.getElementById('player2-score')
@@ -16,10 +28,16 @@ const currentPlayerPrompt = document.getElementById('player-prompt')
 //default player turn
 let currentPlayer = player1
 
+function getRandomPrompt(playerName) {
+    const randomIndex = Math.floor(Math.random() * funPhrases.length)
+    return funPhrases[randomIndex].replace('{player}', playerName)
+}
+
 //switch player logic
 function switchPlayer(){
     currentPlayer = (currentPlayer === player1) ? player2: player1
-    currentPlayerPrompt.textContent = `Current Player: ${currentPlayer.name}`
+    const saying = getRandomPrompt(currentPlayer.name);
+    currentPlayerPrompt.textContent = saying; 
 }
 
 const totalTiles = 12
