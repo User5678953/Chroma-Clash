@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     randomizeTileBorders()
     changeBackgroundcolor()
-    currentPlayerPrompt.textContent = "Pick a tile, any tile!";
+    currentPlayerPrompt.textContent = "Pick a tile, any tile!"
 })
 
 const player1 = {
@@ -15,20 +15,20 @@ const player2 = {
 }
 
 const funPhrases = [
-    "{player}, step up to the challenge! 💪",
-    "{player}, it's your time to shine! 🌟",
-    "{player}, take the lead! 🚀",
-    "{player}, show 'em what you've got! 🔥",
-    "{player}, you're on! 🎯",
-    "{player}, dazzle us! ✨",
-    "{player}, make your move! 🕺",
-    "{player}, let's see your skills! ",
-    "{player}, it's game time! 🕹",
-    "{player}, capture the moment! 📸",
-    "{player}, be unstoppable! 🌊",
-    "{player}, own the board! ",
-    "{player}, go for the win! 🏆",
-    "{player}, every move counts! ⏳"
+    "{player}, pair up!",
+"{player}, meet your match!",
+"{player}, double or nothing!",
+"{player}, it's tile time!",
+"{player}, match point!",
+"{player}, seek and pair!",
+"{player}, twin tiles await!",
+"{player}, match to master!",
+"{player}, two's the charm!",
+"{player}, find the twin!",
+"{player}, pair-fect play!",
+"{player}, match on!",
+"{player}, tile and trial!",
+"{player}, memory matchup!"
 ]
 
 //randomize tile border
@@ -63,14 +63,9 @@ function switchPlayer(){
 
 const totalTiles = 24
 
-// Generate random gray and once and store them in arrays
+// Generate random gray and bright colors once and store them in arrays
 const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
-
-//generate pairs of bright colors and store in array
 const pairsOfBrightColors =generatePairsOfBrightColors()
-    console.log('this is the bright color pairs array' ,pairsOfBrightColors);
-
-
 
     //for loop to iterate totalTiles and genrate multiple  
     function generateAllTiles(){
@@ -133,33 +128,7 @@ function generateTile(index, color) {
 
     // Store original gray color in a data attribute
     tile.dataset.originalColor = randomGrayColor[index]
-
-    //event listner for user click
-    tile.addEventListener('click', () => {
-        console.log(`Setting tile color to: ${color}`)
-        
-        // Check if the tile is already matched
-        if (tile.classList.contains('matched')) {
-            return  // Don't do anything if it's a matched tile
-        }
-        
-        //is the tile already flipped?
-        if(tile.dataset.flipped === 'false') {
-            //if not flipped
-            tile.dataset.flipped = 'true'
-            
-            tile.style.backgroundColor = color
-        }else{
-            //if tile is flipped, reset the tile
-            tile.dataset.flipped = 'false'
-            tile.style.backgroundColor = randomGrayColor[index]
-    
-        }
-    })
-    
-    // Initialize with random gray color
     tile.style.backgroundColor = randomGrayColor[index]
-        console.log('This is the tile color',color);
     return tile
 }
 
@@ -195,8 +164,8 @@ function checkColorMatch (tile1, tile2, tiles) {
     } else {
         console.log('No match')
 
-// Disable all tiles
-tiles.forEach(tile => tile.style.pointerEvents = 'none')
+        // Disable all tiles
+        tiles.forEach(tile => tile.style.pointerEvents = 'none')
 
         // Delay before resetting colors
         setTimeout(() => {
@@ -210,7 +179,7 @@ tiles.forEach(tile => tile.style.pointerEvents = 'none')
         
             // Re-enable all tiles
             tiles.forEach(tile => tile.style.pointerEvents = 'auto')
-        }, 1000); 
+        }, 1500); 
     }       
             //check win condition 
             checkWinCondition()
@@ -245,26 +214,50 @@ function checkWinCondition () {
     //store user selection
     let selectedTiles =[]
     
+    
+    //tile click handler
     function tileClickHandler() {
-        if (this.classList.contains('matched')) {
+        if (this.classList.contains('matched') || this.classList.contains('clicked')) {
             console.log('Matched tile clicked, skipping')
             return
         }
 
         console.log('Regular tile clicked, processing')
 
+        const color = pairsOfBrightColors[Array.from(tiles).indexOf(this)]
+        if (this.dataset.flipped === 'false') {
+            this.dataset.flipped = 'true';
+            this.style.backgroundColor = color;
+        } else {
+            this.dataset.flipped = 'false';
+            this.style.backgroundColor = this.dataset.originalColor
+        }
+
         if (selectedTiles.length < 2) {
                 selectedTiles.push(this)
                 this.style.border = '5px solid #006767'
-        }
+                this.classList.add('clicked')
+            }
     
         if (selectedTiles.length === 2) {
-        
+            
+            tiles.forEach(tile => tile.classList.add('clicked'))
     
             checkColorMatch(selectedTiles[0], selectedTiles[1], tiles)
+            
+            //reset tiles
             selectedTiles.forEach((selectedTile) => {
                 selectedTile.style.border = '5px solid #fff'
-            });
+                selectedTile.classList.remove('clicked')
+            })
+
+            // Enable all unmatched tiles to be clicked again
+            tiles.forEach(tile => {
+                if (!tile.classList.contains('matched')) {
+                    tile.classList.remove('clicked')
+                }
+            })
+            
             selectedTiles = []
             
             //check the win condition with function

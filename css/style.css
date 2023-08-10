@@ -1,8 +1,16 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 50px;
+    padding: 0;
   }
+body {
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-dark);
+}
+.clicked {
+    pointer-events: none;
+}
   
 /*Landing_HTML styles*/
 .landing-screen {
@@ -99,7 +107,7 @@ h6 {
 } 
 .player-score, .score-value {
     color:#fff;
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 15px;
@@ -123,6 +131,7 @@ h6 {
 .tiles-container {
     margin: 30px auto;
     width: fit-content;
+    height: fit-content;
     display: grid;
     grid-template-columns: repeat(6, auto);
     gap: 8px;
@@ -130,6 +139,8 @@ h6 {
     border: 8px solid #006767;
     border-radius: 10px;
     padding: 10px;
+    justify-content: center;
+    align-items: center;
 }
 .tile {
  height: 200px;
@@ -214,17 +225,16 @@ h6 {
 @media screen and (max-width: 768px) {
     .tiles-container {
         grid-template-columns: repeat(4, 1fr);
-        gap: 4px; 
-        width: 110%;
-        max-width: calc(100px * 4 + 4px * 3);   
-        padding: 5px;  
+        gap: 2px; 
+        width: 100%;
+        max-width: calc(90px * 4 + 4px * 3);   
     }
     .tile {
         height: 50px;
         width: 50px;
         font-size: 10px;
         margin: 2px;
-        padding: 3px;
+        padding: 5px;
     }
     body {
         padding: 5px;
@@ -238,10 +248,9 @@ h6 {
         padding: 1px 3px;
         white-space: nowrap;
     }
-
     .reset-button {
         padding: 5px 10px;
-        font-size: 12px;
+        font-size: 25px;
         margin-bottom: 10px;
     }
     .player-prompt {
@@ -261,4 +270,38 @@ h6 {
     .button-container {
         margin-top: 5px;
     }
+    .player-score, .score-value {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
 }
+@media screen and (min-width: 1280px) and (max-width: 1440px) and (min-height: 800px) and (max-height: 900px) {
+    .landing-screen, .tiles-container, .game-updates, .player-prompt {
+        max-width: 1280px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .tiles-container {
+        grid-template-columns: repeat(5, auto); 
+        gap: 10px;
+    }
+    .tile {
+        height: 160px; 
+        width: 160px;
+    }
+    .game-updates {
+        padding: 10px 15px; 
+    }
+    .player-prompt {
+        font-size: 30px; 
+    }
+    .reset-button {
+        padding: 30px 50px;
+        font-size: 28px;
+    }
+    #player1-score, #player2-score {
+        font-size: 22px; 
+        padding: 8px 15px;
+    }
+}
+
