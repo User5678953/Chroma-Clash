@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     randomizeTileBorders()
     changeBackgroundcolor()
+    currentPlayerPrompt.textContent = "Pick a tile, any tile!";
 })
 
 const player1 = {
@@ -34,8 +35,8 @@ const funPhrases = [
 function randomizeTileBorders() {
     const tiles = document.querySelectorAll('.tile')
     const randomRadius = Math.floor(Math.random() * 101)
-    console.log(randomRadius)
-    tiles.forEach(tile => {
+        console.log(randomRadius)
+        tiles.forEach(tile => {
         tile.style.borderRadius = `${randomRadius}%`
     })
 }
@@ -67,7 +68,7 @@ const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
 
 //generate pairs of bright colors and store in array
 const pairsOfBrightColors =generatePairsOfBrightColors()
-console.log('this is the bright color pairs array' ,pairsOfBrightColors);
+    console.log('this is the bright color pairs array' ,pairsOfBrightColors);
 
 
 
@@ -75,6 +76,7 @@ console.log('this is the bright color pairs array' ,pairsOfBrightColors);
     function generateAllTiles(){
         console.log('this is bright pairs', pairsOfBrightColors)
         const tilesContainer = document.querySelector('.tiles-container')
+        
         for (let i=0; i < totalTiles; i++){
             const tile = generateTile(i, pairsOfBrightColors[i]) 
             tilesContainer.appendChild(tile)
@@ -82,7 +84,6 @@ console.log('this is the bright color pairs array' ,pairsOfBrightColors);
     }
 
     generateAllTiles()
-
 
 // Shuffle the array using Fisher-Yates algorithm
 function shuffleArray(array) {
@@ -98,8 +99,7 @@ function shuffleArray(array) {
 
 //generate pairs of colors 
 function generatePairsOfBrightColors (){
-    const brightColors = ['#FF5050', '#00FFFF', '#9933FF', '#ADFF2F', '#1E90FF', '#FF0099', '#00CED1', '#FFCC00', '#BA55D3', '#20B2AA', '#FF6633', '#9370DB']
-                        
+    const brightColors = ['#FF5050', '#00FFFF', '#9933FF', '#ADFF2F', '#1E90FF', '#FF0099', '#00CED1', '#FFCC00', '#BA55D3', '#20B2AA', '#FF6633', '#9370DB']                     
     const pairs = []
 
     for (const color of brightColors) {
@@ -159,7 +159,7 @@ function generateTile(index, color) {
     
     // Initialize with random gray color
     tile.style.backgroundColor = randomGrayColor[index]
-    console.log('This is the tile color',color);
+        console.log('This is the tile color',color);
     return tile
 }
 
@@ -169,11 +169,11 @@ function checkColorMatch (tile1, tile2, tiles) {
     const color1 = tile1.style.backgroundColor
     const color2 = tile2.style.backgroundColor
 
-    console.log(`Checking color match: ${color1} and ${color2}`)
+        console.log(`Checking color match: ${color1} and ${color2}`)
 
     //match found
     if (color1 === color2) {
-        console.log('matched')
+            console.log('matched')
 
         // Update score
         currentPlayer.score += 1

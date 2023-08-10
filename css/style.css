@@ -41,17 +41,22 @@ html, body {
 }
 .game-title {
     color: #fff;
-    font-size:64px;
+    font-size:48px;
     font-family: 'Anton', sans-serif;
     text-shadow: 2px 2px 4px rgba(o, o, o, o.8); 
     text-align: center;
 }
-
 h6 {
     color: white;
 
 }
-.start-button {
+.start-buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.start-buttonContainer button {
     color:#fff;
     background-color: #008080;
     padding:20px 80px;
@@ -59,13 +64,15 @@ h6 {
     border: none;
     cursor: pointer;
     border-radius: 50px;
+    margin: 10px;
 }
-#startButton:hover {
+.start-buttonContainer button:hover {
     background-color: #00b2b2;
 }
-#startButton:active {
+.start-buttonConatiner:active {
     background-color: #006767;
 }
+
 
 /*Game_HTML styles*/
 
@@ -77,20 +84,22 @@ h6 {
     --color-mid-dark: #708090; /* slategray */
     --color-dark: #2F4F4F; /* darkslategray */
 }
-
-.banner {
-    height: 5vh;
-    background-color: var(--color-mid-dark);
-}
 .game-updates {
+    margin-bottom: 20px;
+    color: #fff;
     display: flex;
-    justify-content: space-around;
-    padding:10px;
-    font-size: 50px;
-    border-top: 10px solid #006767;
-}
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    font-weight: bold;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #008080;
+    padding: 0 20px;
+} 
 .player-score, .score-value {
     color:#fff;
+    font-size: 50px;
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 15px;
@@ -99,12 +108,9 @@ h6 {
     cursor: pointer;
     font-family: 'Anton';
     background-color: rgba(0, 0, 0, 0.1);  
-    border: 2px solid rgba(255, 255, 255, 0.2); 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
-    transition: transform 0.2s, box-shadow 0.2s; 
 } 
-.score-value {
-    font-size: 20px
+.score-value, .player-score {
+    font-size: 45px
 }  
 .timer {
     font-size: 24px;
@@ -139,8 +145,13 @@ h6 {
     align-items: center;
     justify-content: center;
     height: 10vh;
-    font-size: 45px;
+    width: 100%;
+    font-size: 35px;
     font-weight: bold;
+    border-radius: 10px; 
+    box-sizing: content-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #008080;  
 }
 .button-container {
     display: flex;
@@ -148,27 +159,20 @@ h6 {
     margin-top: 20px;
 }
 
-.start-game-button,
 .reset-button {
     color: #fff;
     background-color: #008080;
-    padding: 20px 30px;
-    font-size: 24px;
+    padding: 40px 60px;
+    font-size: 30px;
     text-align: center;
     border: none;
     cursor: pointer;
     border-radius: 5px auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-top: 60px;
     margin-left: auto;
     margin-right: auto;
-}
-.start-game-button:hover {
-    background-color: #00b2b2;
-}
-
-.start-game-button:active {
-    background-color: #006767;
+    display: block;
 }
 .reset-button:hover {
     background-color: #00b2b2;
@@ -188,20 +192,22 @@ h6 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-}
-#player1-score{
     color: #fff;
     background-color: #008080;
     margin-bottom: 20px;
 }
-#player2-score{
-  color: #fff;
-  background-color: #008080;
-  margin-bottom: 20px;
+.unmatched {
+    border-color: black;
+    border: 4px;
 }
 .matched {
     pointer-events: none;
     opacity: 0.8;
+}
+.player-prompt, .game-updates, .player-score, .score-value {
+    max-width: 75%; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*Media Query*/
@@ -209,13 +215,13 @@ h6 {
     .tiles-container {
         grid-template-columns: repeat(4, 1fr);
         gap: 4px; 
-        width: 100%;
+        width: 110%;
         max-width: calc(100px * 4 + 4px * 3);   
         padding: 5px;  
     }
     .tile {
-        height: 48px;
-        width: 48px;
+        height: 50px;
+        width: 50px;
         font-size: 10px;
         margin: 2px;
         padding: 3px;
@@ -233,7 +239,7 @@ h6 {
         white-space: nowrap;
     }
 
-    .start-game-button, .reset-button {
+    .reset-button {
         padding: 5px 10px;
         font-size: 12px;
         margin-bottom: 10px;
@@ -248,7 +254,6 @@ h6 {
         max-width: 80%;
         text-align: center;
         justify-content: center;
-        white-space: nowrap;
     }
     .landing-screen {
         margin-bottom: 30px;

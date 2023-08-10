@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromat-a-Match</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+body {
+    background-color: var(--color-dark)
+}
+    </style>
+
+</head>
+
+<body>
+
+    <!--Player prompt area-->
+    <div class="player-prompt" id="player-prompt"></div>
+  
+    <!--Game Board-->
+   
+        <!--Tiles div-->
+        <div class="tiles-container"></div>
+       
+     <!--Score Updates -->  
+    <div class="game-updates">
+            <div class="player-score" id="player1-score">
+                <span class="player-name">Player 1:</span>
+                <span class="score-value"></span>
+             </div>
+            
+            <div class="player-score" id="player2-score">
+                <span class="player-name">Player 2:</span>
+                <span class="score-value"></span>
+            </div>
+        </div>
+
+     <!--Buttons-->
+     <div class="button-container">
+        <button class="reset-button">Reset Game</button>
+    </div>
+
+<script>
+    //Background color change
+    const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F']
+        function changeBackgroundcolor () {
+            //DOM reference to divs
+            const body = document.querySelector('body')
+            const randomColor = colors[Math.floor(Math.random()* colors.length)]
+            body.style.backgroundColor = randomColor
+        }
+
+    // event listener to the reset button
+    const resetButton = document.querySelector('.reset-button');
+        resetButton.addEventListener('click', resetGame);
+
+    // Reset game 
+    function resetGame() {
+        location.reload()
+    }
+
+    //Display countdown for timer update
+    function updateTimer(seconds) {
+        const timerElement = document.getElementById('timer');
+        timerElement.textContent = seconds
+    }
+
+// Event listener for the Start Game button
+const startGameButton = document.querySelector('.start-game-button')
+    startGameButton.addEventListener('click', startGame)
+
+</script>
+
+<script src="js/2Player.js"></script>
+
+</body>
+</html>

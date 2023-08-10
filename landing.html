@@ -13,28 +13,32 @@
             <img src="images/icon-512.png" alt="Game Icon" id="gameIcon" class="flip-animation" width="200" height="200">         
         </div>
         <h1 class="game-title">Chromat-a-Clash</h1>
-<button class="start-button" onclick="startGame()">Start</button>
-    
-</section>
+        
+            <div class="start-buttonContainer">
+                <button class="SinglePlayer" onclick= "alert('Single player coming soon!')">Singleplayer</button>      
+                <button class="MultiPlayer" onclick="startGame2()">Multiplayer</button>  
+            </div>
+    </section>
     
 
     <footer>
-
         <h6>Icon created using IconKitchen</h6>
     </footer>
+
 <script>
-    function startGame(){
-        window.location.href="game.html"
+
+    function startGame2(){
+        window.location.href="2PlayerGame.html"
     }
 
     //Background color change
     const colors = ['#7fbc5f', "#9f516f", "#e71c61", "#7c8a80", "#61848a", "#c494b4"]
-    function changeBackgroundcolor () {
-        //DOM reference to divs
-        const body = document.querySelector('body')
-        const randomColor = colors[Math.floor(Math.random()* colors.length)]
-        body.style.backgroundColor = randomColor
-    }
+        function changeBackgroundcolor () {
+            //DOM reference to divs
+            const body = document.querySelector('body')
+            const randomColor = colors[Math.floor(Math.random()* colors.length)]
+            body.style.backgroundColor = randomColor
+        }
 
     changeBackgroundcolor();
 
@@ -57,7 +61,7 @@
       
 </script>
 
-<script src="js/main.js"></script>
+<script src="js/2Player.js"></script>
 
 </body>
 </html>
