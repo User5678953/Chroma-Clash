@@ -133,7 +133,7 @@ h6 {
     width: fit-content;
     height: fit-content;
     display: grid;
-    grid-template-columns: repeat(6, auto);
+    grid-template-columns: repeat(5, auto);
     gap: 8px;
     box-sizing: border-box;
     border: 8px solid #006767;

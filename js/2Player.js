@@ -1,9 +1,11 @@
+//window on load to change background and randomize tile borders
 document.addEventListener('DOMContentLoaded', () => {
     randomizeTileBorders()
     changeBackgroundcolor()
     currentPlayerPrompt.textContent = "Pick a tile, any tile!"
 })
 
+//Variables
 const player1 = {
     score: 0,
     name: 'Player 1'
@@ -14,6 +16,7 @@ const player2 = {
     name: 'Player 2'
 }
 
+//Player Phrases Prompt
 const funPhrases = [
     "{player}, pair up!",
 "{player}, meet your match!",
@@ -31,59 +34,41 @@ const funPhrases = [
 "{player}, memory matchup!"
 ]
 
-//randomize tile border
-function randomizeTileBorders() {
-    const tiles = document.querySelectorAll('.tile')
-    const randomRadius = Math.floor(Math.random() * 101)
-        console.log(randomRadius)
-        tiles.forEach(tile => {
-        tile.style.borderRadius = `${randomRadius}%`
-    })
-}
+//Tile Count
+const totalTiles = 20
+
+//default player turn on game start
+let currentPlayer = player1
 
 //Dom references for score and prompt
 const player1ScoreElement = document.getElementById('player1-score')
 const player2ScoreElement = document.getElementById('player2-score')
 const currentPlayerPrompt = document.getElementById('player-prompt')
 
-//default player turn
-let currentPlayer = player1
+//Utility Functions
 
+//Return random player prompt
 function getRandomPrompt(playerName) {
     const randomIndex = Math.floor(Math.random() * funPhrases.length)
     return funPhrases[randomIndex].replace('{player}', playerName)
 }
 
-//switch player logic
-function switchPlayer(){
-    currentPlayer = (currentPlayer === player1) ? player2: player1
-    const saying = getRandomPrompt(currentPlayer.name);
-    currentPlayerPrompt.textContent = saying; 
+//randomize tile border radius
+function randomizeTileBorders() {
+    const tiles = document.querySelectorAll('.tile')
+    const randomRadius = Math.floor(Math.random() * 101)
+        console.log(randomRadius)
+        //set random radius percentage for each tile
+        tiles.forEach(tile => {
+        tile.style.borderRadius = `${randomRadius}%`
+    })
 }
 
-const totalTiles = 24
-
-// Generate random gray and bright colors once and store them in arrays
-const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
-const pairsOfBrightColors =generatePairsOfBrightColors()
-
-    //for loop to iterate totalTiles and genrate multiple  
-    function generateAllTiles(){
-        console.log('this is bright pairs', pairsOfBrightColors)
-        const tilesContainer = document.querySelector('.tiles-container')
-        
-        for (let i=0; i < totalTiles; i++){
-            const tile = generateTile(i, pairsOfBrightColors[i]) 
-            tilesContainer.appendChild(tile)
-        }
-    }
-
-    generateAllTiles()
-
-// Shuffle the array using Fisher-Yates algorithm
+// Shuffle the array using Fisher-Yates algorithm to shuffle the colors each reset
+let j
 function shuffleArray(array) {
     console.log("Before shuffle:", array);
-    let j
+   
     for (let i = array.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1))
         console.log(`Swapping position ${i} with position ${j}`);
@@ -92,7 +77,9 @@ function shuffleArray(array) {
     console.log("After shuffle:", array);
 }
 
-//generate pairs of colors 
+//Color Generation and assignment 
+
+//generate pairs of colors and store them in array using shuffle function
 function generatePairsOfBrightColors (){
     const brightColors = ['#FF5050', '#00FFFF', '#9933FF', '#ADFF2F', '#1E90FF', '#FF0099', '#00CED1', '#FFCC00', '#BA55D3', '#20B2AA', '#FF6633', '#9370DB']                     
     const pairs = []
@@ -104,12 +91,9 @@ function generatePairsOfBrightColors (){
     return pairs
 }
 
-//random color for flipped tile
-function setRandomBrightColor(){
-    const brightColors =  ['#007BFF', '#FF0000', '#28A745', '#FFC107', '#6F42C1', '#FD7E14']
-    const randomColorIndex = Math.floor(Math.random() * brightColors.length)
-    return brightColors[randomColorIndex]
-}
+// Generate random gray and bright colors once and store them in arrays
+const randomGrayColor = Array.from({ length: totalTiles }, setRandomGrayColor)
+const pairsOfBrightColors =generatePairsOfBrightColors()
 
 //random Gray color for unflipped tile
 function setRandomGrayColor(){
@@ -118,10 +102,26 @@ function setRandomGrayColor(){
     return grayColors[randomColorIndex]
 }
 
-//generate tile initially 
-function generateTile(index, color) {
-    const tile = document.createElement('div')
-    tile.classList.add('tile')
+//Tile Generation
+
+//Generate tiles
+function generateAllTiles(){
+    console.log('this is bright pairs', pairsOfBrightColors)
+    const tilesContainer = document.querySelector('.tiles-container')
+        
+    //Assign Random Pair of Colors and append to tiles-container
+    for (let i=0; i < totalTiles; i++){
+        const tile = generateTile(i, pairsOfBrightColors[i]) 
+        tilesContainer.appendChild(tile)
+    }
+}
+
+generateAllTiles()
+
+//Generate tile new tile with 
+    function generateTile(index) {
+        const tile = document.createElement('div')
+        tile.classList.add('tile')
 
     //Initial state, unflipped
     tile.dataset.flipped = false
@@ -131,6 +131,15 @@ function generateTile(index, color) {
     tile.style.backgroundColor = randomGrayColor[index]
     return tile
 }
+
+//Game logic
+
+//switch player logic
+function switchPlayer(){
+    currentPlayer = (currentPlayer === player1) ? player2: player1
+    const saying = getRandomPrompt(currentPlayer.name);
+    currentPlayerPrompt.textContent = saying; 
+} 
 
 //Match Logic
 
@@ -179,7 +188,7 @@ function checkColorMatch (tile1, tile2, tiles) {
         
             // Re-enable all tiles
             tiles.forEach(tile => tile.style.pointerEvents = 'auto')
-        }, 1500); 
+        }, 1200); 
     }       
             //check win condition 
             checkWinCondition()
@@ -187,6 +196,7 @@ function checkColorMatch (tile1, tile2, tiles) {
             //switch player turn
             switchPlayer()
 }
+
 //Check win condition function
 function checkWinCondition () {
     const totalMatchesNeeded = totalTiles / 2
@@ -210,12 +220,18 @@ function checkWinCondition () {
     }
 }
 
-    const tiles = document.querySelectorAll('.tile')
-    //store user selection
-    let selectedTiles =[]
+const tiles = document.querySelectorAll('.tile')
+//store user selection
+let selectedTiles =[]
+ 
+//Event handers for click
+
+//Add click Event handler to each tile
+tiles.forEach((tile) => {
+    tile.addEventListener('click', tileClickHandler)
+})
     
-    
-    //tile click handler
+//tile click handler
     function tileClickHandler() {
         if (this.classList.contains('matched') || this.classList.contains('clicked')) {
             console.log('Matched tile clicked, skipping')
@@ -266,7 +282,3 @@ function checkWinCondition () {
 
     }
 
-//click event fo every ttile generated
-    tiles.forEach((tile) => {
-        tile.addEventListener('click', tileClickHandler)
-    })
