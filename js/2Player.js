@@ -188,7 +188,7 @@ function checkColorMatch (tile1, tile2, tiles) {
         
             // Re-enable all tiles
             tiles.forEach(tile => tile.style.pointerEvents = 'auto')
-        }, 1200); 
+        }, 1075); 
     }       
             //check win condition 
             checkWinCondition()
