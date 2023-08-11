@@ -150,13 +150,14 @@ h6 {
  cursor: pointer;
 }
 .player-prompt {
+    display: flex;
     margin-bottom: 20px;
     color: #fff;
     align-items: center;
     justify-content: center;
     height: 10vh;
     width: 100%;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: bold;
     border-radius: 25px; 
     box-sizing: content-box;
