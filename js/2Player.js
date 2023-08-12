@@ -81,8 +81,8 @@ function shuffleArray(array) {
 
 //generate pairs of colors and store them in array using shuffle function
 function generatePairsOfBrightColors (){
-    const brightColors = ['#FF5050', '#00FFFF', '#9933FF', '#ADFF2F', '#1E90FF', '#FF0099', '#00CED1', '#FFCC00', '#BA55D3', '#20B2AA', '#FF6633', '#9370DB']                     
-    const pairs = []
+    const brightColors = ['#FF5733', '#07F633', '#00A782', '#FC23F1', '#26FCF2', '#FCF408','#FFA200','#1500F8','#8F00FC','#5DBEFFF8']                     
+    const pairs = []    
 
     for (const color of brightColors) {
         pairs.push(color,color)
