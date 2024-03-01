@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chroma Clash</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <style>
+body {
+    background-color: var(--color-dark);
+    padding: 0;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Player prompt area -->
+    <div class="player-prompt" id="player-prompt">Pick a tile, any tile!</div>
+  
+    <!-- Game Board -->
+    <div class="tiles-container"></div>
+       
+    <!-- Score Update for Single Player -->  
+    <div class="game-updates">
+        <div class="player-score" id="player-score">
+            <span class="player-name">Score:</span>
+            <span class="score-value">0</span>
+        </div>
+    </div>
+     
+    <!-- Reset Button -->
+    <div class="button-container">
+        <button class="reset-button">Reset Game</button>
+    </div>
+
+<script>
+    // Background color change
+    const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F'];
+    function changeBackgroundcolor () {
+        const body = document.querySelector('body');
+        const randomColor = colors[Math.floor(Math.random()* colors.length)];
+        body.style.backgroundColor = randomColor;
+    }
+
+    // Event listener for the reset button
+    const resetButton = document.querySelector('.reset-button');
+    resetButton.addEventListener('click', () => location.reload());
+
+    // Game initialization and logic script
+    // Make sure to adjust or implement your game logic here or in a separate JS file
+
+</script>
+
+<script src="js/1Player.js"></script>
+
+</body>
+</html>
