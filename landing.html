@@ -15,17 +15,21 @@
         <h1 class="game-title">Chroma Clash</h1>
         
             <div class="start-buttonContainer">
-                <button class="SinglePlayer" onclick= "alert('Single player coming soon!')">Singleplayer</button>      
+                <button class="SinglePlayer" onclick= "startGame1()">Singleplayer</button>      
                 <button class="MultiPlayer" onclick="startGame2()">Multiplayer</button>  
             </div>
     </section>
     
 
     <footer>
-        <h6>Icon created using IconKitchen</h6>
+
     </footer>
 
 <script>
+
+    function startGame1(){
+        window.location.href="1PlayerGame.html"
+    }
 
     function startGame2(){
         window.location.href="2PlayerGame.html"
