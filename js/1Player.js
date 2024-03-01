@@ -231,7 +231,7 @@ function checkColorMatch(tile1, tile2) {
             document.querySelectorAll('.tile:not(.matched)').forEach(tile => {
                 tile.style.pointerEvents = 'auto';
             });
-        }, 1000); // Adjust delay as necessary
+        }, 750); // Adjust delay as necessary
     }
 
     // Check win condition
