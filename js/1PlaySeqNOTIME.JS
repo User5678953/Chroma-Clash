@@ -51,7 +51,7 @@ function playSound(type) {
             soundPath = 'sounds/fail.mp3';
             break;
         case 'win':
-            soundPath = 'sounds/duolingo correct sound.mp3'; // Ensure this path is correct
+            soundPath = 'sounds/aoeVictory.mp3'; // Ensure this path is correct
             break;
         default:
             console.error('Invalid sound type');
