@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chroma Clash</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/TESTstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <style>
         body {
@@ -16,7 +16,7 @@
 <body>
 
     <!-- Player prompt area -->
-    <div class="player-prompt" id="player-prompt">Pick a tile, any tile!</div>
+    <div class="player-prompt" id="player-prompt">Push Start!</div>
   
     <!-- Game Board -->
     <div class="tiles-container"></div>
@@ -29,11 +29,18 @@
         </div>
     </div> 
      
-    <!-- Reset Button -->
-    <div class="button-container">
-        <button class="reset-button">Reset Game</button>
-    </div>
+   <!-- Combined Button Container -->
+<div class="button-container">
+    <button id="start-game-button" class="start-game-button">Start Game</button>
+    <button class="reset-button">Reset Game</button>
 
+     <!-- Timer Toggle -->
+     <label class="timer-toggle">
+        Timer: <input type="checkbox" id="timerToggle">
+    </label>
+    <!-- Timer Display (Initially hidden) -->
+    <div id="timer-display" style="display: none; color: #fff; font-size: 20px; margin-top: 10px;">Time: 00:00</div>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const colors = ['#A9A9A9', '#808080', '#696969', '#778899', '#708090', '#2F4F4F'];
@@ -50,12 +57,11 @@
 
         // Call background color change function
         changeBackgroundcolor();
+        
     });
 </script>   
  
-<!-- Sound utility script -->
-<!-- <script src="utils/sound.js"></script> -->
-
+<!-- <script src="js/1PlayerSeq.js"></script> -->
 <script src="js/TEST.JS"></script>
 
 </body>
