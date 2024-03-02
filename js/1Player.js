@@ -231,14 +231,15 @@ function checkColorMatch(tile1, tile2) {
             document.querySelectorAll('.tile:not(.matched)').forEach(tile => {
                 tile.style.pointerEvents = 'auto';
             });
-        }, 750); // Adjust delay as necessary
+        }, 850); // Adjust delay as necessary
     }
+
 
     // Check win condition
     checkWinCondition();
 }
 
-// Update the checkWinCondition function to reflect single-player logic
+//Determine Win
 function checkWinCondition() {
     const matchedTiles = document.querySelectorAll('.tile.matched').length;
     if (matchedTiles === totalTiles) {
