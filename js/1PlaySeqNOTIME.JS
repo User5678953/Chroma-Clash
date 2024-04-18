@@ -107,7 +107,7 @@ function flipRandomTilesSequence(sequence) {
     });
     setTimeout(() => {
         enableTiles();
-        showTurnBanner();
+        showBanner("Your Turn!");
     }, 2000 + sequence.length * 500);
 }
 
@@ -156,6 +156,7 @@ function checkSequenceMatch() {
             resetTiles();
             playerSequence = [];
             setTimeout(() => flashSequenceToUser(sequenceToMatch), 1000); // Re-show the same sequence
+            showBanner('Not a match. Try again!');
         }, 1000);
     }
 }
@@ -167,20 +168,12 @@ function resetTiles() {
     });
 }
 
-function createTurnBanner() {
-    const banner = document.createElement('div');
-    banner.id = 'turn-banner';
-    document.body.appendChild(banner);
-    banner.style.cssText = "position: absolute; top: 20%; width: 100%; text-align: center; font-size: 2em; color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; z-index: 10; display: none;";
-    return banner;
-}
-
-function showTurnBanner() {
+function showBanner(message) {
     let banner = document.getElementById('turn-banner');
     if (!banner) {
-        banner = createTurnBanner();
+        banner = createBanner();
     }
-    banner.textContent = 'Your Turn!';
+    banner.textContent = message;
     banner.style.display = 'block';
     requestAnimationFrame(() => {
         banner.style.opacity = '1';
@@ -192,3 +185,12 @@ function showTurnBanner() {
         }, 1500);
     });
 }
+
+function createBanner() {
+    const banner = document.createElement('div');
+    banner.id = 'turn-banner';
+    document.body.appendChild(banner);
+    banner.style.cssText = "position: absolute; top: 20%; width: 100%; text-align: center; font-size: 2em; color: white; background-color: rgba(0, 0, 0, 0.7); padding: 10px; z-index: 10; display: none;";
+    return banner;
+}
+

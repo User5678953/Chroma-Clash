@@ -157,6 +157,17 @@ body {
     opacity: 0;
     transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
 }
+footer {
+    width: 100%; /* Full width of the viewport */
+    background-color: #0f1d1b; /* Matching background with the header */
+    color: #ffffff; /* Text color for readability */
+    text-align: center; /* Center-aligned footer text */
+    padding: 20px 0; /* Padding for spacing */
+    position: fixed; /* Fixed position to stick at the bottom */
+    bottom: 0; /* Align to the bottom of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    right: 0; /* Align to the right of the viewport */
+  }
 
 
 
