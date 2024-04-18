@@ -15,7 +15,8 @@
         <h1 class="game-title">Chroma Clash</h1>
         
             <div class="start-buttonContainer">
-                <button class="SinglePlayer" onclick= "startGame1()">Singleplayer</button>      
+                <button class="SinglePlayer" onclick= "startGame1()">Singleplayer</button>  
+                <button class="SinglePlayer" onclick= "startGame3()">Sequence Match</button>     
                 <button class="MultiPlayer" onclick="startGame2()">Multiplayer</button>  
             </div>
     </section>
@@ -33,6 +34,9 @@
 
     function startGame2(){
         window.location.href="2PlayerGame.html"
+    }
+    function startGame3(){
+        window.location.href="1PlayerSeq.html"
     }
 
     //Background color change
