@@ -33,7 +33,7 @@ function randomizeTileBorders() {
 
 function updateScoreDisplay() {
     const successPercentage = totalAttempts > 0 ? (score / totalAttempts) * 100 : 0;
-    document.querySelector('.score-value').textContent = `Success Rate: ${successPercentage.toFixed(2)}%`;
+    document.querySelector('.score-value').textContent = `You recalled ${successPercentage.toFixed(2)}%`;
 }
 
 function playSound(type) {
@@ -135,6 +135,7 @@ function tileClickHandler() {
 
 function checkSequenceMatch() {
     if (sequenceToMatch.length === playerSequence.length && sequenceToMatch.every((value, index) => value === playerSequence[index])) {
+        showBanner('Match!');
         if (firstAttempt) {
             score++;
         }
